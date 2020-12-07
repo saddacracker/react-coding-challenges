@@ -7,6 +7,10 @@ export default function LaunchPad() {
 
   setTimeout(() => { triggerRerender(rerenderCount + 1); }, 500);
 
+  console.log('====================================');
+  console.log('rerenderCount', rerenderCount);
+  console.log('====================================');
+
   return (
     <div className="launchpad">
       <ClassRocket />

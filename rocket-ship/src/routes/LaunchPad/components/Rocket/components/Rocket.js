@@ -1,11 +1,12 @@
 import React, { useState, Component } from 'react';
 import RocketCore from './RocketCore';
 
-export function FunctionalRocket() {
+// Wrapping FunctionalRocket in memo prevents re-renders. 
+export const FunctionalRocket = React.memo(function FunctionalRocket() {
   const [initialLaunchTime] = useState(Date.now());
 
   return <RocketCore initialLaunchTime={initialLaunchTime} />;
-}
+});
 
 export class ClassRocket extends Component {
   constructor() {
@@ -14,6 +15,11 @@ export class ClassRocket extends Component {
     this.state = {
       initialLaunchTime: Date.now()
     };
+  }
+
+  // Prevents multiple renders (you can add logic to allow)
+  shouldComponentUpdate(nextProps, nextState){
+      return false;
   }
 
   render() {
